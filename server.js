@@ -1,0 +1,17 @@
+var http = require('http'),
+    fileSystem = require('fs'),
+    path = require('path');
+
+var hostname = 'localhost';
+var port = 25565;
+
+var server = http.createServer(function(req,res){
+    console.log(req.headers);
+
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end('<h1>Hello World</h1>');
+});
+
+server.listen(port, hostname, function(){
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
