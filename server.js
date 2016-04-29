@@ -1,17 +1,26 @@
-var http = require('http'),
-    fileSystem = require('fs'),
-    path = require('path');
+/*jshint esversion: 6 */
+let express = require('express'),
+    morgan = require('morgan'),
+    http = require('http'),
+    dishRouter = require('./dishRouter'),
+    leaderRouter = require('./leaderRouter'),
+    promoRouter = require('./promoRouter');
 
-var hostname = 'localhost';
-var port = 3000;
+let hostname = '71.164.175.158';
+let port = 3000;
 
-var server = http.createServer(function(req,res){
-    console.log(req.headers);
+let app = express();
 
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('<h1>Hello World</h1>');
-});
+app.use(morgan('dev'));
 
-server.listen(port, hostname, function(){
-    console.log(`Server running at http://${hostname}:${port}/`);
+app.use('/dishes',dishRouter);
+
+app.use('/leadership',leaderRouter);
+
+app.use('/promotions',promoRouter);
+
+app.use(express.static(__dirname + '/public'));
+
+app.listen(port, hostname, function(){
+    console.log(`Server running at http://${hostname}:${port}`);
 });
