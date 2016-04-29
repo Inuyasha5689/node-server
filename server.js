@@ -1,15 +1,15 @@
 /*jshint esversion: 6 */
-let express = require('express'),
+var express = require('express'),
     morgan = require('morgan'),
     http = require('http'),
     dishRouter = require('./dishRouter'),
     leaderRouter = require('./leaderRouter'),
     promoRouter = require('./promoRouter');
 
-let hostname = '71.164.175.158';
-let port = 3000;
+var hostname = '71.164.175.158';
+var port = 3000;
 
-let app = express();
+var app = express();
 
 app.use(morgan('dev'));
 
