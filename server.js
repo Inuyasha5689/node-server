@@ -3,7 +3,7 @@ var http = require('http'),
     path = require('path');
 
 var hostname = 'localhost';
-var port = 25565;
+var port = 3000;
 
 var server = http.createServer(function(req,res){
     console.log(req.headers);
